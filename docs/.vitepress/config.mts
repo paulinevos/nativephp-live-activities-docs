@@ -5,7 +5,7 @@ export default defineConfig({
   description: 'Live Activities and Live Updates for NativePHP Mobile, driven by PHP.',
   base: '/nativephp-live-activities-docs/',
   lang: 'en-US',
-  sitemap: { hostname: 'https://paulinevos.github.io/nativephp-live-activities-docs/' },
+  sitemap: { hostname: 'https://pauline-vos.nl/nativephp-live-activities-docs/' },
   themeConfig: {
     siteTitle: 'Live Activities',
     nav: [
