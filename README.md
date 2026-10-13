@@ -3,7 +3,7 @@
 The full user documentation for `vos/nativephp-live-activities`, built with
 [VitePress](https://vitepress.dev/) and deployed to GitHub Pages.
 
-Site: https://pauline-vos.nl/nativephp-live-activities-docs/
+Site: https://pauline-vos.nl/nativephp-live-activities-free/
 
 ## Local development
 
@@ -23,12 +23,12 @@ npm run docs:build
 npm run docs:preview
 ```
 
-Preview the printed URL including `/nativephp-live-activities-docs/`.
+Preview the printed URL including `/nativephp-live-activities-free/`.
 The build fails on missing internal Markdown page links.
 
 ## Publishing with GitHub Pages
 
-Create `paulinevos/nativephp-live-activities-docs`, push this repository to its
+Create `paulinevos/nativephp-live-activities-free`, push this repository to its
 `main` branch, and select **Settings → Pages → Build and deployment → Source →
 GitHub Actions**. This project inherits the account’s `pauline-vos.nl` Pages
 domain; the `paulinevos.github.io` URL redirects there. The Pages workflow builds and deploys on pushes to `main` and

@@ -3,19 +3,19 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'NativePHP Live Activities',
   description: 'Live Activities and Live Updates for NativePHP Mobile, driven by PHP.',
-  base: '/nativephp-live-activities-docs/',
+  base: '/nativephp-live-activities-free/',
   lang: 'en-US',
-  sitemap: { hostname: 'https://pauline-vos.nl/nativephp-live-activities-docs/' },
+  sitemap: { hostname: 'https://pauline-vos.nl/nativephp-live-activities-free/' },
   themeConfig: {
     siteTitle: 'Live Activities',
     nav: [
-      { text: 'Guide', link: '/getting-started' },
+      { text: 'Guide', link: '/' },
       { text: 'PHP API', link: '/php-api' },
       { text: 'Plugin', link: 'https://nativephp.com/plugins/vos/nativephp-live-activities' },
     ],
     sidebar: [
       { text: 'Start here', items: [
-        { text: 'Getting started', link: '/getting-started' },
+        { text: 'Getting started', link: '/' },
         { text: 'Platform support', link: '/platform-support' },
       ] },
       { text: 'PHP API', items: [
@@ -38,9 +38,9 @@ export default defineConfig({
     ],
     search: { provider: 'local' },
     outline: [2, 3],
-    socialLinks: [{ icon: 'github', link: 'https://github.com/paulinevos/nativephp-live-activities-docs' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/paulinevos/nativephp-live-activities-free' }],
     editLink: {
-      pattern: 'https://github.com/paulinevos/nativephp-live-activities-docs/edit/main/docs/:path',
+      pattern: 'https://github.com/paulinevos/nativephp-live-activities-free/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
     footer: { message: 'Documentation for vos/nativephp-live-activities.' },
