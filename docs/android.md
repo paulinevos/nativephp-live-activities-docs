@@ -29,6 +29,18 @@ so the Android major version alone does not establish availability.
 particular activity was promoted. The system remains authoritative over the
 final appearance. See [Android's Live Updates requirements](https://developer.android.com/develop/ui/views/notifications/live-update).
 
+## ETA and countdowns
+
+Use `countdown($finishAt)` to show a native notification countdown or
+`eta($finishAt)` to show the finish time in the user's local time zone.
+Countdowns tick while the app is in the background without per-second updates.
+
+The notification countdown continues into negative time after the deadline; it
+does not sound an alarm or end the activity automatically. A promoted status-bar
+chip may stop showing the time at zero. Android controls the chip's appearance.
+
+See [ETA and countdowns](/php-api#eta-and-countdowns) for version support and examples.
+
 ## Icons and colors
 
 Android notification icons are monochrome. Use [template artwork](/icons#rendering-modes)

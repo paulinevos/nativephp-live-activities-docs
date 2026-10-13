@@ -42,6 +42,16 @@ prepared at runtime needs a shared container accessible to both the host and wid
 
 See [runtime artwork](/runtime-artwork) for preparation and retention behavior.
 
+## ETA and countdowns
+
+Use `countdown($finishAt)` to show the remaining time or `eta($finishAt)` to show
+the finish time in the user's local time zone. The native countdown keeps ticking
+while the app is in the background and holds at zero once the deadline passes.
+It does not sound an alarm or end the activity automatically.
+
+See [ETA and countdowns](/php-api#eta-and-countdowns) for version support, examples,
+and how to change or remove the time display.
+
 ## Updates and dismissal
 
 Local updates require your app's PHP runtime to be executing. An activity can
