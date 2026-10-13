@@ -33,14 +33,14 @@ depends on system support and user settings and is never guaranteed.
 In an existing NativePHP Mobile app:
 
 ```sh
-composer config repositories.live-activities-free vcs https://github.com/paulinevos/nativephp-live-activities-free
-composer require vos/nativephp-live-activities-free:dev-main
+composer require vos/nativephp-live-activities-free
+
 php artisan vendor:publish --tag=nativephp-plugins-provider
 php artisan native:plugin:register vos/nativephp-live-activities-free
 php artisan native:plugin:list
 ```
 
-The VCS repository installs the free edition directly from GitHub; no paid-plugin
+The VCS repository installs the free edition directly from Packagist; no paid-plugin
 credentials are needed. NativePHP Mobile's own requirements still apply.
 The free and paid editions share the same PHP namespace and cannot be installed
 together. Remove the free edition before installing the paid plugin.
