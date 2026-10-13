@@ -1,0 +1,38 @@
+{
+    "namespace": "DemoUI",
+    "platforms": [
+        "ios",
+        "android"
+    ],
+    "components": [
+        {
+            "type": "text",
+            "element": "Native\\Mobile\\Edge\\Elements\\Text",
+            "blade": "Native\\Mobile\\Edge\\Components\\Native\\Text",
+            "ios_renderer": "DemoTextRenderer",
+            "android_renderer": "com.vos.demoui.DemoTextRenderer"
+        }
+    ],
+    "ios": {
+        "min_version": "18.0"
+    },
+    "android": {
+        "min_version": 29
+    },
+    "bridge_functions": [
+        {
+            "name": "DemoUI.RequestNotifications",
+            "android": "com.vos.demoui.DemoNotifications.Request",
+            "android_params": [
+                "activity"
+            ]
+        },
+        {
+            "name": "DemoUI.NotificationSettings",
+            "android": "com.vos.demoui.DemoNotifications.OpenSettings",
+            "android_params": [
+                "activity"
+            ]
+        }
+    ]
+}

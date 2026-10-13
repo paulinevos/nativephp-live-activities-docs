@@ -1,0 +1,69 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Process\Process;
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+$root = dirname(__DIR__);
+$command = $argv[1] ?? '';
+$commands = ['setup', 'ios', 'android', 'mock', 'e2e'];
+if (! in_array($command, $commands, true)) {
+    fwrite(STDERR, 'Usage: php bin/demo [setup|ios|android|mock|e2e] [arguments]'.PHP_EOL);
+    exit(1);
+}
+
+// Stage only distributable files: a path symlink to the repository would copy
+// the example's own vendor directory recursively into the native app bundle.
+$files = new Filesystem;
+$stage = $root.'/.build/plugin';
+$files->ensureDirectoryExists($stage);
+foreach (['src', 'config', 'resources'] as $directory) {
+    $files->deleteDirectory($stage.'/'.$directory);
+    $files->copyDirectory($root.'/'.$directory, $stage.'/'.$directory);
+}
+foreach (['composer.json', 'nativephp.json', 'LICENSE'] as $file) {
+    $files->copy($root.'/'.$file, $stage.'/'.$file);
+}
+
+$app = $root.'/examples/demo';
+$run = static function (array $arguments) use ($app): int {
+    $process = new Process($arguments, $app, timeout: null);
+    if (Process::isTtySupported() && stream_isatty(STDIN)) {
+        $process->setTty(true);
+    }
+
+    return $process->run(static function (string $type, string $buffer): void {
+        fwrite($type === Process::ERR ? STDERR : STDOUT, $buffer);
+    });
+};
+
+if ($command === 'setup') {
+    if (! is_file($app.'/.env')) {
+        $files->copy($app.'/.env.example', $app.'/.env');
+    }
+    $status = $run(['composer', 'install', '--no-interaction', '--prefer-dist']);
+    if ($status !== 0) {
+        exit($status);
+    }
+    if (preg_match('/^APP_KEY=.+$/m', $files->get($app.'/.env'))) {
+        exit(0);
+    }
+    exit($run([PHP_BINARY, 'artisan', 'key:generate', '--no-interaction']));
+}
+
+if (! is_file($app.'/vendor/autoload.php')) {
+    fwrite(STDERR, 'Run php bin/demo setup first.'.PHP_EOL);
+    exit(1);
+}
+
+$artisan = match ($command) {
+    'ios' => 'demo:ios',
+    'android' => 'demo:android',
+    'mock' => 'demo:mock',
+    'e2e' => 'demo:e2e',
+};
+exit($run([PHP_BINARY, 'artisan', $artisan, ...array_slice($argv, 2)]));

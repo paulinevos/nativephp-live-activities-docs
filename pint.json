@@ -1,0 +1,8 @@
+{
+    "preset": "laravel",
+    "exclude": [
+        ".build",
+        "examples/demo/nativephp",
+        "examples/demo/storage"
+    ]
+}

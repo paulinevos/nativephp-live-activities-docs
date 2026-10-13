@@ -1,0 +1,75 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "vos/live-activities-demo",
+    "type": "project",
+    "description": "Local simulator demo for NativePHP Live Activities",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^12.0",
+        "nativephp/mobile": "^4.5",
+        "vos/nativephp-live-activities-free": "@dev",
+        "vos/live-activities-demo-ui": "@dev"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^12.0",
+        "soloterm/solo": "^0.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "test": "@php artisan test",
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php artisan solo"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        },
+        "platform": {
+            "php": "8.4.0"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../.build/plugin",
+            "options": {
+                "symlink": true,
+                "versions": {
+                    "vos/nativephp-live-activities-free": "dev-main"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "packages/demo-ui",
+            "options": {
+                "symlink": true,
+                "versions": {
+                    "vos/live-activities-demo-ui": "dev-main"
+                }
+            }
+        }
+    ]
+}

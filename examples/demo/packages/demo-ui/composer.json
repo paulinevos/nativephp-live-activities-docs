@@ -1,0 +1,24 @@
+{
+    "name": "vos/live-activities-demo-ui",
+    "description": "Minimal iOS and Android renderers and permission controls for the local demo",
+    "type": "nativephp-ui-plugin",
+    "license": "proprietary",
+    "require": {
+        "nativephp/mobile": "^4.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vos\\DemoUI\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vos\\DemoUI\\DemoUIServiceProvider"
+            ]
+        },
+        "nativephp": {
+            "manifest": "nativephp.json"
+        }
+    }
+}

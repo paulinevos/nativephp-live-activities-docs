@@ -1,0 +1,58 @@
+{
+    "name": "vos/nativephp-live-activities-free",
+    "description": "Free Live Activities and Live Updates for NativePHP Mobile, based on version 1.0.0.",
+    "type": "nativephp-plugin",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "illuminate/support": "^12.0",
+        "nativephp/mobile": "^4.5"
+    },
+    "require-dev": {
+        "laravel/boost": "^2.10",
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^10.0",
+        "phpunit/phpunit": "^12.0"
+    },
+    "conflict": {
+        "vos/nativephp-live-activities": "*"
+    },
+    "suggest": {
+        "vos/nativephp-live-activities": "Upgrade for custom icons, countdowns, deep links, and more: https://nativephp.com/plugins/vos/nativephp-live-activities"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vos\\LiveActivities\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vos\\LiveActivities\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vos\\LiveActivities\\LiveActivitiesServiceProvider"
+            ]
+        },
+        "nativephp": {
+            "manifest": "nativephp.json"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "format": "pint",
+        "check": [
+            "@composer validate --strict",
+            "pint --test",
+            "@test"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "8.4.0"
+        },
+        "sort-packages": true
+    }
+}
