@@ -1,0 +1,68 @@
+{
+    "name": "vos/nativephp-live-activities-free",
+    "description": "Free Live Activities and Live Updates for NativePHP Mobile.",
+    "namespace": "LiveActivities",
+    "bridge_functions": [
+        {
+            "name": "LiveActivities.Start",
+            "ios": "LiveActivitiesFunctions.Start",
+            "android": "com.vos.liveactivities.LiveActivitiesFunctions.Start",
+            "android_params": [
+                "context"
+            ],
+            "description": "Start a Live Activity for a key with initial content"
+        },
+        {
+            "name": "LiveActivities.Update",
+            "ios": "LiveActivitiesFunctions.Update",
+            "android": "com.vos.liveactivities.LiveActivitiesFunctions.Update",
+            "android_params": [
+                "context"
+            ],
+            "description": "Update an active Live Activity with new content"
+        },
+        {
+            "name": "LiveActivities.End",
+            "ios": "LiveActivitiesFunctions.End",
+            "android": "com.vos.liveactivities.LiveActivitiesFunctions.End",
+            "android_params": [
+                "context"
+            ],
+            "description": "End an active Live Activity"
+        },
+        {
+            "name": "LiveActivities.List",
+            "ios": "LiveActivitiesFunctions.List",
+            "android": "com.vos.liveactivities.LiveActivitiesFunctions.List",
+            "android_params": [
+                "context"
+            ],
+            "description": "List the currently active Live Activities"
+        },
+        {
+            "name": "LiveActivities.Capabilities",
+            "ios": "LiveActivitiesFunctions.Capabilities",
+            "android": "com.vos.liveactivities.LiveActivitiesFunctions.Capabilities",
+            "android_params": [
+                "context"
+            ],
+            "description": "Report platform support, notification permission, and promotion availability"
+        }
+    ],
+    "android": {
+        "permissions": [
+            "android.permission.POST_NOTIFICATIONS",
+            "android.permission.POST_PROMOTED_NOTIFICATIONS"
+        ],
+        "min_version": 29
+    },
+    "ios": {
+        "info_plist": {
+            "NSSupportsLiveActivities": true
+        },
+        "min_version": "18.0"
+    },
+    "hooks": {
+        "post_compile": "live-activities:install-ios"
+    }
+}

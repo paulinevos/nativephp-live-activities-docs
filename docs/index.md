@@ -2,6 +2,12 @@
 
 Start, update, and end iOS Live Activities and Android ongoing notifications from PHP.
 
+::: info Free or paid?
+This site documents the [paid plugin](https://nativephp.com/plugins/vos/nativephp-live-activities).
+For the free edition based on v1.0.0, use its
+[README](https://github.com/paulinevos/nativephp-live-activities-free#readme).
+:::
+
 Requires PHP 8.4+, Laravel 12, and NativePHP Mobile 4.5+.
 See [platform support](/platform-support) for OS requirements and permissions.
 

@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Illuminate\Contracts\Console\Kernel;
+use Orchestra\Testbench\Foundation\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+// Boost deliberately disables itself in Testbench's default testing environment.
+putenv('APP_ENV=local');
+$_ENV['APP_ENV'] = 'local';
+$_SERVER['APP_ENV'] = 'local';
+
+// Boot Laravel's Testbench skeleton, then target this package for generated files
+// and dependency discovery. Runtime storage stays in the Testbench skeleton.
+$application = Application::create(options: [
+    'extra' => ['providers' => [
+        Laravel\Mcp\Server\McpServiceProvider::class,
+        Laravel\Boost\BoostServiceProvider::class,
+    ]],
+]);
+$storagePath = $application->storagePath();
+$application->setBasePath(dirname(__DIR__));
+$application->useStoragePath($storagePath);
+$application->make('config')->set('app.name', 'NativePHP Live Activities');
+$application->make('config')->set('boost.enforce_tests', true);
+$application->make('config')->set('boost.guidelines.exclude', ['deployments']);
+
+$kernel = $application->make(Kernel::class);
+$input = new ArgvInput;
+$output = new ConsoleOutput;
+$status = $kernel->handle($input, $output);
+$kernel->terminate($input, $status);
+
+exit($status);
